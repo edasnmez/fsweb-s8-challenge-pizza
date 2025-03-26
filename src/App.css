@@ -1,42 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quattrocento:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Satisfy&display=swap');
+
+:root {
+  --sari: #FDC913;
+  --acik-gri: #5F5F5F;
+  --koyu-gri: #292929;
+  --kirmizi: #CE2829;
+  --bej: #FAF7F2;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  max-width: 100%;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.homeHeader {
+  background-image: url(/images/iteration-1-images/home-banner.png);
+  width: 100vw;  
+  height: 607px; 
+  background-size: cover; 
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center;  
+  padding-top: 20px;
+  text-align: center; 
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+img{
+  width: 250px;
+height: 35px;
+
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.homeHeader h2 {
+  color: var(--bej);
+  margin: 20px 0;
+  font-family: "Roboto Condensed";
+  font-weight: 300;
+  font-size: 62px;
+  letter-spacing: 1.8px;
+  width: 400px;
+  height: auto;
+  text-align: center; 
+}
+
+.homeHeader button {
+  background-color: var(--sari);
+  color: var(--koyu-gri);
+  border-radius: 1.5rem;
+  padding: .6rem 2.4rem;
+}
+
+@media (max-width: 500px) {
+  .homeHeader {
+    height: 350px;
+    padding-top: 5px;
   }
-  to {
-    transform: rotate(360deg);
+  img{
+    width: 100px;
+  height: 20px;
+  
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .homeHeader h2 {
+    font-size: 26px; 
+    width: 120px;
+    margin: 5px 0; 
+    letter-spacing: 5px;
   }
-}
 
-.card {
-  padding: 2em;
-}
 
-.read-the-docs {
-  color: #888;
+  .homeHeader button {
+    padding: .2rem 1rem;
+    font-size: 12px;
+  }
 }
