@@ -4,10 +4,12 @@ import './App.css'
 import Home from './pages/Home'
 import OrderPizza from './pages/OrderPizza'
 import Success from './pages/Success'
+import { useState } from 'react';
+
 
 
 function App() {
-
+  const [orderData, setOrderData] = useState(null);
   return (
     <Router>
     <>
@@ -19,10 +21,10 @@ function App() {
           <Home />
         </Route>
         <Route path="/orderPizza/:pisim" >
-          <OrderPizza />
+          <OrderPizza  setOrderData={setOrderData} />
         </Route>
         <Route path="/success">
-          <Success />
+          <Success orderData={orderData} />
         </Route>
       </Switch>
 

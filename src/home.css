@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quattrocento:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Satisfy&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+:root {
+  --sari: #FDC913;
+  --acik-gri: #5F5F5F;
+  --koyu-gri: #292929;
+  --kirmizi: #CE2829;
+  --bej: #FAF7F2;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+/* header */
+
+.homeHeader {
+  background-image: url(/images/iteration-1-images/home-banner.png);
+  width: 100vw;  
+  height: 607px; 
+  background-size: cover; 
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center;  
+  padding-top: 20px;
+  text-align: center; 
+}
+img{
+  width: 250px;
+height: 35px;
+
+}
+
+.homeHeader h2 {
+  color: var(--bej);
+  margin: 20px 0;
+  font-family: "Roboto Condensed";
+  font-weight: 300;
+  font-size: 62px;
+  letter-spacing: 1.8px;
+  width: 400px;
+  height: auto;
+  text-align: center; 
+}
+
+.homeHeader button {
+  background-color: var(--sari);
+  color: var(--koyu-gri);
+  border-radius: 1.5rem;
+  padding: .6rem 2.4rem;
+}
+
+/* Kategoriler Nav*/
+.nav{
+    flex-wrap: nowrap;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+}
+.category-btn{
+display: flex;
+width: 120px;
+height: 42px;
+gap: 4px;
+padding: 0;
+font-family: Barlow;
+font-size: 13px;
+color: var(--koyu-gri);
+align-items: center;
+justify-content: center;
+background-color: #FFFFFF;
+border: none;
+}
+.category-btn img{
+    height: 24px;
+    width: 24px;
+}
+.category-btn:hover{
+    background-color: var(--sari);
+}
+
+
+/* Öne Çıkanlar  Section*/
+
+.featured{
+display: flex;
+justify-content: center;
+height: auto;
+width: 100vw;
+background-color: var(--bej);
+padding: 40px 0;
+gap:8px;
+}
+
+.featured-left{
+    width: 350px;
+    background-image: url('/images/iteration-2-images/cta/kart-1.png');
+    background-size: cover;
+    height: 300px;
+    padding-top: 30px;
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap:6px;
+    border-radius: 9px;
+}
+.featured-left h2{
+    font-family: Quattrocento;
+font-weight: 600;
+font-size: 42px;
+line-height: 40px;
+color: #FFFFFF;
+width: 186px;
+}
+.featured-left h4{
+font-family: Barlow;
+font-weight: 400;
+font-size: 14px;
+color: #FFFFFF;
+width: 190px;
+}
+.featured-btn{
+    width: 96px;
+    height: 32px;
+    background-color: #FFFFFF;
+    color: var(--kirmizi);
+    border-radius: 30px;
+    font-family: Barlow;
+    font-weight: 600;
+    font-size: 12px;
+    border: none;
+
+    &:hover{
+        background-color: var(--sari);
+        color: var(--bej);
+    }
+    
+}
+.featured-right{
+    width: 350px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.item-first{
+    background-image:url('/images/iteration-2-images/cta/kart-2.png');
+}
+.item-second{
+    background-image:url('/images/iteration-2-images/cta/kart-3.png');
+}
+ .featured-right-item{
+    background-size: contain;
+    height: 150px;
+    padding-top: 16px;
+    padding-left: 24px;
+    border-radius: 9px;
+    
+ }
+ .featured-right-item h4{
+    font-family: Barlow;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    width: 130px;
+}
+.item-first h4{
+    color: #FFFFFF;
+}
+.item-second span{
+    color: var(--kirmizi);
+}
+
+
+/* title section */
+
+.titles{
+background-color: var(--bej);
+padding-bottom: 30px;
+}
+.titles h4{
+    font-family: Satisfy;
+    font-weight: 300;
+    font-size: 20px;
+    color: var(--kirmizi);  
+}
+.titles h3{
+font-family: Barlow;
+font-weight: 400;
+font-size: 30px;
+margin-bottom: 0;
+}
+
+/* Kategoriler-2 */
+
+.second-nav{
+    background-color: var(--bej);
+}
+.second-nav .category-btn{
+    border-radius: 32px;
+    padding: 4px 4px;
+    margin: 0 8px;
+}
+
+/* Ürün Listesi */
+.products{
+    width: 100vw;
+    background-color: var(--bej);
+    display: flex;
+    justify-content: center; 
+    gap:20px; 
+    padding: 30px 0 50px 0;
+}
+.product-item{
+    display: flex;
+    flex-direction: column;
+    width: 228px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    gap:6px;
+}
+.img-div img{
+    width:180px;
+    height: 170px;
+}
+
+.product-item h6{
+font-family: Barlow;
+font-weight: 600;
+font-size: 15px;
+text-align: left;
+margin-top: 6px;
+}
+.products-details{
+    font-family: Barlow;
+    font-weight: 400;
+    font-size: 12px;
+    text-align: right;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;  
+}
+
+.footer{
+    width: 100vw;
+    height: 374px;
+    background-color: var(--koyu-gri);
+    color: var(--bej);
+    display: flex;
+    flex-direction: column;
+
+}
+.footer-top{
+height: 314px;
+display: flex;
+margin: 39px 0 0 314px;
+}
+.ft-left{
+ width: 250px;
+text-align: left;
+}
+.ft-left h2{
+    font-family: Londrina Solid;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    width: 170px;
+    margin-bottom: 30px;
+
+}
+.contacts{
+    display: flex;
+    font-family: Barlow;
+    font-weight: 300;
+    font-size: 13px;
+    width: 200px;
+    text-align: left;
+    gap: 8px;
+    margin: 4px 0;
+}
+.contacts img{
+    height: 20px;
+    width: 20px;
+}
+
+.ft-center{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    font-family: Barlow;
+    text-align: left;
+    gap: 6px;
+    
+
+}
+.ft-center h6{
+    font-family: Barlow;
+    font-weight: 300;
+    font-size: 14px;
+
+    }
+    
+.ft-center h4{
+font-weight: 400;
+font-size: 20px;
+margin-bottom: 20px;
+margin-top: 38px;
+}
+
+.ft-right{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    font-family: Barlow;
+    text-align: left;
+    gap: 10px;
+    margin-top: 34px;
+}
+.ft-right h4{
+    font-weight: 400;
+    font-size: 20px;
+}
+.ft-right .images{
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+.ft-right img{
+    width: 76px;
+    height: 76px;
+
+}
+hr{
+    color: var(--bej);
+}
+.footer-bottom{
+text-align: left;
+font-family: Barlow;
+font-weight: 300;
+font-size: 13px;
+display: flex;
+justify-content: space-between;
+width: 750px;
+margin-left: 314px;
+align-items: center;
+height: 60px;
+}
+.fa-brands .fa-twitter{
+    width: 9px;
+    height: 9px;
+    color: var(--bej);
+}
+
+
+
+/* media*/
+@media only screen and (max-width: 600px) {
+    .homeHeader {
+
+        width: 70%;
+      }
+    
+      .homeHeader h2 {
+        font-size: 34px;
+        width: 60%;
+        font-weight: 200;
+      }
+    
+      .homeHeader button {
+        padding: 0.5rem 1.5rem;
+        font-size: 14px;
+      }
+
+/* Kategoriler Nav */
+.nav {
+    flex-wrap: wrap;
+    width: 70%;
+    gap: 40px;
+    padding: 20px 50px;
+    height: auto;
+  }
+
+  .category-btn {
+    width: 90px;
+    height: 36px;
+    gap: 10px;
+  }
+
+/* Öne Çıkanlar */
+.featured {
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+  }
+
+  .featured-left{
+    height: 270px;
+  }
+  .featured-right {
+    height: auto;
+  }
+
+  .titles{
+    width: 70%;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .titles h3{
+font-size: 36px;
+font-weight: 500;
+width: 65%;
+  }
+
+  
+/* Ürün Listesi */
+.products {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 70%;
+  }
+
+  .product-item {
+    width: 80%;
+    height: auto;
+  }
+
+  .img-div img {
+    width: 80%;
+    height: auto;
+  }
+
+  .home-footer .footer{
+    display: block;
+  }
+
+
+  /* Footer */
+  .footer {
+    height: auto;
+    width: 70%;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    margin: 0;
+    height: auto;
+    margin-left: 80px;
+  }
+
+  .ft-left,
+  .ft-center,
+  .ft-right {
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  .footer-bottom {
+    width: 100%;
+    margin: 0;
+    padding: 0 80px;
+  }
+  
+}

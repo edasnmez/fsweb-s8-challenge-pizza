@@ -2,42 +2,119 @@
 
 .success-container {
     background-color: #CE2829;
-    height: 100vh;
+    height: 720px;
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:space-evenly;
-    text-align: center;
+    justify-content: center;
+    gap: 30px;
   }
   
   .success-logo {
     width: 200px;
-  
+    margin-bottom: 50px;
+    max-width: 50%;
   }
-  
-  .success-message {
+  .msg-one{
+    font-family: Satisfy;
+font-weight: 300;
+font-size: 26px;
+line-height: 30px;
+color: #FDC913;
+;
+
+  }
+  .msg-two{
     color: #FAF7F2;
     font-family: Roboto Condensed;
-    font-weight: 300;
+    font-weight: 200;
     font-size: 42px;
     letter-spacing: 1.5px;
     vertical-align: middle;
   }
-  
-  @media (max-width: 500px) {
-    .success-message {
-      font-size: 32px; 
-      width: 150px;
-    }
-  
-    .success-container {
-      padding: 20px;
+  .line{
+    color: #FAF7F2;
+    width: 370px;
+    border-width: 2px;
+  }
+  .pizza-name{
+    font-family: Barlow;
+font-weight: 500;
+font-size: 118px;
+color: #FFFFFF;
+
+  }
+  .title{
+    font-family: Barlow;
+font-weight: 300;
+font-size: 14px;
+background-color: #CE2829;
+color: #FFFFFF;
+
+  }
+  .msg-center{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .details{
+    font-family: Barlow;
+font-weight: 500;
+font-size: 14px;
+color: #FFFFFF;
+display: flex;
+justify-content: flex-start;
+width: 140px;
+gap: 4px;
+flex-wrap: wrap;
+  }
+
+  .msg-bottom{
+    width: 233px;
+    height: 131px;
+    border: 1px solid #FAF7F2;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .price-container{
+    width: 168px;
+    height: 72px;
+    font-family: Barlow;
+font-weight: 400;
+font-size: 14px;
+color: #FAF7F2;
+display: flex;
+flex-direction: column;
+  }
+
+  .pc-title {
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 8px;
+}
+.price {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%; 
+  padding: 4px 0;
+}
+
+
+
+
+@media only screen and (max-width: 600px)  {
+ 
+    .success-logo{
+      margin-bottom: 150px;
     }
 
-  
-    .success-logo {
-      width: 150px; 
+    .msg-center,.msg-bottom,.footer,hr{
+      display: none;
     }
   }
   

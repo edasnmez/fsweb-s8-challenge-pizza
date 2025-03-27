@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quattrocento:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Satisfy&display=swap');
+
+
 :root {
     --sari: #FDC913;
     --acik-gri: #5F5F5F;
@@ -18,55 +20,64 @@
     justify-content: center;
     align-items: center;
     background-color:var(--kirmizi) ;
-    height: 180px;
+    height: 92px;
     width: 100vw;  
 
   }
 
   
   .header-img {
-    width: 360px;
-    height: 45px;
+    width: 242px;
+    height: 34px;
   }
-  
 
-  .nav-container {
-    display: flex;
-    gap: 4px; 
-    width: 500px;
-    height: 25px;
-    align-items: center;
-    padding-top: 20px;
-
-  }
-  
-  .nav-item {
-    list-style-type: none;
-  }
-  
-
-  .nav-link {
-    text-decoration: none;  
-    color: var(--bej);  
-font-weight: 400;
-font-size: 16px; 
- }
-header span{
-    color: var(--bej);
-}
   /* FormComponent*/
+  .pizza-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background-color: var(--bej);
+  }
+.pizza-details img{
+width: 390px;
+height: 150px;
+  }
+  .navbar {
+    display: flex;
+    gap: 6px;
+    font-size: 18px;
+    width: 532px;
+    justify-content: flex-start;
+}
 
+.navbar a {
+    text-decoration: none;
+    color: var(--koyu-gri);  
+      font-weight: 400;
+      font-size: 16px; 
+      font-family: Barlow; 
+}
+
+.navbar .active {
+    font-weight: 600;
+    color: var(--kirmizi);
+}
+
+.rating{
+  width: 532px;
+}
+/* Form Kısmı*/
 .form-section{
     width: 100vw; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    
-
+    padding-bottom: 40px;
 }
 #pizza-form{
-    width: 532px;
+    width: 562px;
     font-family: Barlow;
     color: var(--koyu-gri);
 }
@@ -108,18 +119,81 @@ font-weight: 600;
 }
 .boyutSec, .hamurKalinlik, .malzemeBaslik {
     display: flex;
-    flex-direction: column;
     gap: 8px; 
     align-items: start;
+    flex-direction: column;
   }
-  .hamurKalinlik select {
-    width: 150px; 
-    padding: 5px;
+
+  .radio-buttons{
+    display: flex;
+   
+  }
+  .radio-container {
+    display: flex;
+    
   }
   
+  input[type="radio"] {
+    display: none; 
+  }
+  
+  .radio-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bej);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Barlow;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    text-align: center;
+    color: #5F5F5F;
+  }
+  
+  input[type="radio"]:checked + .radio-circle {
+    background-color: var(--sari); 
+    color: var(--bej);
+    font-weight: 500;
+  }
+  
+  .radio-circle:hover {
+    background-color: #b0b0b0;
+  }
+  
+  .selected {
+    background-color: var(--sari); 
+    color: var(--bej);
+    font-weight: 500;
+  }
+  .radio-buttons .form-check{
+    padding: 0;
+    padding-right: 1rem;
+  }
+  /* select */
+  .hamurKalinlik select {
+    width: 190px; 
+    padding: 5px 10px;
+    background-color: var(--bej);
+    color: #5F5F5F;
+    font-family: Barlow;
+font-weight: 400;
+font-size: 12px;
+height: 40px;
+  }
+
+  .hamurKalinlik select option:first-child {
+    display: none;
+  }
+
+/* Ek Malzeme  - Checkbox */
   .ekMalzeme {
     display: flex;
     flex-wrap: wrap;
+    font-family: Barlow;
   }
   
   .checkbox-col {
@@ -129,27 +203,55 @@ font-weight: 600;
   
   .checkbox-input {
     margin-right: 8px; 
+    width: 30px; 
+    height: 30px; 
+    background-color: var(--bej);
   }
   
   .checkbox-label {
     white-space: nowrap; 
+    font-family: Barlow;
+font-weight: 500;
+font-size: 12px;
+  }
+   
+   .checkbox-input:checked {
+    background-color: var(--kirmizi); 
+    border-color: var(--kirmizi); 
+  }
+
+  .checkbox-input:checked + .checkbox-label {
+    color: var(--kirmizi); 
   }
   
+  .checkbox-input:disabled {
+    cursor: not-allowed; 
+  }
+  .checkbox-input:checked::after{
+    color: #292929;
+  }
+  /* ad - not kısmı  */
   .siparis-form-col {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    font-family: Barlow;
   }
   
   .siparis-form-col label {
     font-weight: bold;
     margin-top: 10px;
     font-weight: 600;
+
   }
   .siparis-form-col input{
     width: 40%;
     color: var(--acik-gri);
+    font-weight: 400;
+    font-size: 14px;
+    background-color: var(--bej);
+    border: none;
   }
  
   .siparis-form-col textarea {
@@ -159,64 +261,123 @@ font-weight: 600;
     color: var(--acik-gri);
     resize: none; 
   overflow: auto; 
+  font-weight: 400;
+  font-size: 14px;
+  background-color: var(--bej);
+  border: none;
   }
+  .text-danger{
+    font-size: 14px;
+  }
+  .text-danger i{
+    margin-right: 4px;
+  }
+  /* adet -toplam */
  .secimler, .toplam{
     display: flex;
-    justify-content: space-between;
-    margin: 0 6px;
+    width: 240px;
+    justify-content: space-around;
+    font-family: Barlow;
+font-weight: 400;
+font-size: 15px;
+
+
  }
+.toplam{
+  color: var(--kirmizi);
+  margin-top: 6px;
+}
+ 
  .siparis-container {
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
 }
-.adet-kontrol {
-  display: flex;
-  align-items: start;
-  
-}
+
 .siparis-container .card{
   padding: 0;
-  padding-top: 6px;
+  padding-top: 30px;
+  background-color: var(--bej);
+  width: 235px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 188px;
 }
-.card-body{
-  width: 18rem;
+.card-title{
+  text-align: center;
+  width: 200px;
+  font-family: Barlow;
+font-weight: 500;
+font-size: 18px;
+
+
 }
  .siparis-ver{
     background-color: var(--sari);
     border-color: var(--sari);
-    width: 100%;
+    width: 235px;
     display: block;
+    height: 40px;
+    color: #292929;
+    margin-top: -40px;
  }
 
- 
+
+ .adet-kontrol {
+  display: flex;
+  align-items: start;
+  font-family: Barlow;
+  font-weight: 600;
+  font-size: 16px;
+  
+}
  #arttir,#azalt{
     background-color: var(--sari);
     border-color: var(--sari);
+    width: 37px;
+    height: 37px;
+    color: var(--koyu-gri);
  }
+.adet{
+  width: 37px;
+  height: 37px;
+  border:1px solid var(--bej);
+}
 
-
- @media screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
  */
   .form-nav-header {
-      height: 90px; 
+      position: relative;
+      z-index: -1;
   }
 
   .header-img {
       width:200px; 
       height: 30px;
   }
-
-  .nav-container {
-      width: 100%;
-      height: 25px;
-      padding-top: 15px;
+  .navbar{
+    position: absolute;
+    z-index: 1;
+    top: 50px;
+    left: 30px;
+    width: 100%;
+    color: var(--bej);
   }
 
-  .nav-link {
-      font-size: 12px;
-  }
 
+  .navbar a, .navbar .active{
+      font-size: 14px;
+      color: var(--bej);
+  }
+  .rating{
+    width: 80%;
+    height: auto;
+    padding: 30px 0;
+  }
+  .pizza-details img{
+    display: none;
+  }
   /* Form Section */
   .form-section {
       width: 100vw;
@@ -269,26 +430,48 @@ font-weight: 600;
   .siparis-form-col input,
   .siparis-form-col textarea {
       width: 80%; 
+      background-color: transparent;
+      border: 1px solid var(--bej);
   }
 
   .siparis-form-col textarea {
       padding: 8px; 
   }
 
+  .siparis-container{
+    flex-direction: column-reverse;
+    align-items: center; 
+  }
+
+  .card-title{
+    margin-left: 20px;
+  }
+
   .secimler, .toplam {
       text-align: left;
+      width: 100%;
   }
-  .card-body{
-     width: 12rem;
+  .siparis-container .card {
+    width: 80%; 
+    background-color: transparent;
+    height: 150px;
   }
 
  
   .siparis-ver {
-      font-size: 16px; 
+      font-size: 14px; 
+      width: 30%;
+      float: right;
+      margin-top: 30px;
+      margin-right: 80px;
   }
-  
-  #arttir, #azalt {
-      width: 30px; 
-      height: 30px;
+  .adet-kontrol{
+    margin: -40px;
   }
+  .order-hr{
+    display: block;
+    color: #292929;
+    width: 80%;
+  }
+
 }

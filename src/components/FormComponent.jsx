@@ -5,6 +5,9 @@ import { pizza_data } from '../data';
 import '../OrderPizza.css'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
+import Navbar from './Navbar';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import Swal from 'sweetalert2';
 
 const formVerileri ={
   boyut:"",
@@ -13,21 +16,22 @@ const formVerileri ={
   malzeme: [],
   siparisNotu:"",
 }
-const boyutlar =['Küçük', 'Orta', 'Büyük'];
+const boyutlar =['S', 'M', 'L'];
 const mesajlar ={
   isim:"En az 3 karakter giriniz.",
   boyut:"Lütfen pizzanın boyutunu seçiniz",
   kalinlik:"Lütfen pizzanın kalınlığını seçiniz",
   malzeme1:"En az 4 malzeme seçmelisiniz.",
 }
-function OrderPizza() {
+
+
+function FormComponent({ setOrderData }) {
   const { pisim } = useParams();
   console.log('Pizza isim:', pisim); 
   const pizza = pizza_data.find(x => x.pisim === pisim);
   if (!pizza) {
     return <p>Pizza bulunamadı.</p>; 
   }
-
 
   const[formVeri,setFormVeri]=useState(formVerileri);
   const [adet, setAdet] = useState(1);
@@ -37,6 +41,7 @@ function OrderPizza() {
     isim:"false",
   });
   const [isValid,setIsValid]=useState(false);
+
 
   useEffect(() => {
     if(
@@ -52,6 +57,8 @@ function OrderPizza() {
     }
   },[formVeri]);
 
+ 
+  
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -89,14 +96,31 @@ function OrderPizza() {
     }
 };
 
+
   const history = useHistory();
   const handleOrderClick = (e) => {
     e.preventDefault();
     if (!isValid) return;
-    console.log("Gönderilen Sipariş Verisi:", formVeri); 
-    axios.post('https://reqres.in/api/pizza',formVeri).then(response => {
+    const secimlerFiyat = formVeri.malzeme.length * 5;
+  const toplamFiyat = (pizza.fiyat + secimlerFiyat) * adet;
+  const yeniSiparis = {
+    ...formVeri,
+    secimler: `${secimlerFiyat}₺`,
+    toplamFiyat: `${toplamFiyat}₺`
+  };
+    console.log("Gönderilen Sipariş Verisi:", yeniSiparis); 
+    axios.post('https://reqres.in/api/pizza',yeniSiparis).then(response => {
       console.log('Sipariş Özeti:', response.data);
-      history.push('/success');
+      setOrderData(yeniSiparis);
+      Swal.fire({
+        position: 'center',  
+        icon: 'success',
+        title: 'Siparişiniz oluşturuldu.',
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        history.push('/success');  // Yönlendirme işlemi
+      });
     }).catch(error => {
       //console.error("Sipariş gönderilirken bir hata oluştu:", error);
       if (error.response) {
@@ -111,52 +135,78 @@ function OrderPizza() {
 
   };
 
+
+  
   return (
+    
+    <>
+    <header className="form-nav-header">
+      <img src="/images/iteration-1-images/logo.svg" alt="Logo" className="header-img" />
+    </header>
+    <section className='pizza-details'>
+     <img src="/images/iteration-2-images/pictures/form-banner.png"  />
+     <Navbar />
+     <div className='rating'>
+        <h2 className='isim'>{pizza.pisim}</h2>
+          <div className='degerlendirme my-3'>
+            <h3 className='fiyat'>{pizza.fiyat}₺</h3> 
+          <div className='derece'>
+            <span className='puan'>{pizza.puan} ⭐</span>
+            <span className='yorum'>({pizza.yorum})</span>
+          </div>
+            
+          </div>
+          <p className='aciklama'>{pizza.aciklama}</p>
+     </div>
+    </section>
+
+
     <section className='form-section'>
     <Form id="pizza-form" className="p-4">
-        <Row>
-            <Col>
-            <h2 className='isim'>{pizza.pisim}</h2>
-      <div className='degerlendirme my-3'>
-        <h3 className='fiyat'>{pizza.fiyat}₺</h3> 
-      <div className='derece'>
-        <span className='puan'>{pizza.puan} ⭐</span>
-        <span className='yorum'>({pizza.yorum})</span>
-      </div>
-        
-      </div>
-      <p className='aciklama'>{pizza.aciklama}</p>
-            </Col>
-        </Row>
-     
- 
+
       <Row className='boyutKalinlik py-3'>
   <Col   className='boyutSec'>
     <Label className='boyutLabel'>Boyut Seç <span className="onemli">*</span></Label>
-    {boyutlar.map((boyutSecenek, index) => (
-      <FormGroup check key={index}>
-        <Label check>
-          <Input type="radio" name="boyut" data-cy="boyut" value={boyutSecenek} onChange={handleChange} />
-          {boyutSecenek}
-        </Label>
-      </FormGroup>
-    ))}
-     {errors.boyut  && (
-    <div className="text-danger mt-2">
-      {mesajlar.boyut}
+    <div className="radio-buttons">
+      {boyutlar.map((boyutSecenek, index) => (
+        <FormGroup check key={index} className="radio-container">
+          <Label check>
+            <Input
+              type="radio"
+              name="boyut"
+              value={boyutSecenek}
+              data-cy="boyut"
+              onChange={handleChange}
+              checked={formVeri.boyut === boyutSecenek}
+            />
+            <span className={`radio-circle ${formVeri.boyut === boyutSecenek ? 'selected' : ''}`}>
+              {boyutSecenek}
+            </span>
+          </Label>
+        </FormGroup>
+      ))}
+       
     </div>
-  )}
+    { errors.boyut  && (
+    <div className="text-danger mt-2 text-start">
+      <i className="fa-solid fa-circle-info fa-lg"></i>
+      {mesajlar.boyut}
+    </div>)}
   </Col>
 
   <Col   className='hamurKalinlik'>
   <Label className='hamurLabel' for="kalinlik" >Hamur Seç  <span className="onemli">*</span></Label>
-  <Input  type="select" name="kalinlik" data-cy="kalinlik" onChange={handleChange}>
-    <option value="" >Hamur Kalınlığı</option>
+  <Input  type="select" name="kalinlik" data-cy="kalinlik" 
+  onChange={handleChange}
+
+  >
+    <option value="" >--Hamur Kalınlığı Seç --</option>
     <option value="Kalın">Kalın</option>
     <option value="İnce">İnce</option>
   </Input>
   {errors.kalinlik  && (
-    <div className="text-danger mt-2">
+    <div className="text-danger text-start mt-2">
+      <i className="fa-solid fa-circle-info fa-lg"></i>
       {mesajlar.kalinlik}
     </div>
   )}
@@ -189,7 +239,8 @@ function OrderPizza() {
     </Col>
   ))}
  {(errors.malzeme1 ) && (
-    <div className="text-danger mt-2">
+    <div className="text-danger text-start mt-2">
+      <i className="fa-solid fa-circle-info fa-lg"></i>
       {mesajlar.malzeme1 }
     </div>
   )}
@@ -210,6 +261,7 @@ function OrderPizza() {
     />
      {(errors.isim) && (
     <div data-cy="err-ad" className="text-danger mt-2">
+      <i className="fa-solid fa-circle-info fa-lg"></i>
       {mesajlar.isim}
     </div>
   )}
@@ -226,12 +278,12 @@ function OrderPizza() {
   
 </Row>
 
-    <hr></hr>
+    <hr className='order-hr'></hr>
 
     <Row className="mt-3 siparis-container">
   <Col  className="adet-kontrol ">
     <Button id="arttir" onClick={() => setAdet(q => Math.max(1, q - 1))}>-</Button>
-    <span className="mx-3">{adet}</span>
+    <span className="adet">{adet}</span>
     <Button id="azalt" onClick={() => setAdet(q => q + 1)}>+</Button>
   </Col>
 
@@ -244,22 +296,20 @@ function OrderPizza() {
         Sipariş Toplamı
     </CardTitle>
     <CardText>
-  <div className='secimler'>Seçimler: <span>{formVeri.malzeme.length * 5}₺</span></div>
-  <div className='toplam'>Toplam: <span>{(pizza.fiyat + formVeri.malzeme.length * 5) * adet}₺</span></div>
+  <div className='secimler' >Seçimler: <span name="secimler"  onClick={handleOrderClick} >{formVeri.malzeme.length * 5}₺</span></div>
+  <div className='toplam'>Toplam: <span name="fiyat"  onClick={handleOrderClick} >{(pizza.fiyat + formVeri.malzeme.length * 5) * adet}₺</span></div>
 </CardText>
-
-
-    <Button className='siparis-ver' data-cy="siparis-btn" onClick={handleOrderClick} disabled={!isValid}>
+  </Card>
+  <Button className='siparis-ver' data-cy="siparis-btn" onClick={handleOrderClick} disabled={!isValid}>
     SİPARİŞ VER
     </Button>
-  </Card>
   </Col>
 </Row>
-
-
     </Form>
     </section>
+    
+    </>
   );
 }
 
-export default OrderPizza;
+export default FormComponent;
